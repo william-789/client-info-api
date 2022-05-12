@@ -53,6 +53,7 @@ function App() {
     }
 
     const [client, setClient] = useState([])
+    const [loading, setLoading] = useState(true);
 
     const FetchApi = async () => {
       try {
@@ -64,6 +65,7 @@ function App() {
         //uses await cause json() also returns a Promise
         setClient(data);
         console.log(client);
+        setLoading(false);
       } catch (err) {
         console.log('ERROR');
         console.error(err);        
@@ -72,7 +74,11 @@ function App() {
       useEffect(() => {
         FetchApi()
       }, [])
-
+  if(loading){
+    return(
+      <div>Loading...</div>
+    )
+  } else {
   return (
     <MainSectionBox >
         <ClientBox>
@@ -93,7 +99,7 @@ function App() {
         </InfoBox>
         
     </MainSectionBox>
-  )
+  )}
 }
 /*MISSING: Loading animation*/
 
