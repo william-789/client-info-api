@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import clientPicture from './react.jpg'
+
+const LoadingBox = styled.div `
+width: 100vw;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+`;
 
 const MainSectionBox = styled.section `
 width: 100vw;
@@ -76,7 +83,7 @@ function App() {
       }, [])
   if(loading){
     return(
-      <div>Loading...</div>
+      <LoadingBox>Loading...</LoadingBox>
     )
   } else {
   return (
